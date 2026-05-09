@@ -14,6 +14,7 @@ const STACKS = [
   { label: 'Tailwind CSS',      file: 'tailwind.json' },
   { label: 'Prisma / Postgres', file: 'prisma.json' },
   { label: 'GraphQL / Apollo',  file: 'graphql.json' },
+  { label: 'Express / Node',    file: 'express.json' },
   { label: 'VTEX IO',           file: 'vtex.json' },
   { label: 'Nuvemshop',         file: 'nuvemshop.json' },
 ];

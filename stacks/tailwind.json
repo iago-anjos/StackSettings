@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:tailwindcss.com)"
+      "WebFetch(domain:tailwindcss.com)",
+      "WebFetch(domain:ui.shadcn.com)",
+      "WebFetch(domain:www.radix-ui.com)",
+      "WebFetch(domain:headlessui.com)",
+      "WebFetch(domain:daisyui.com)",
+      "WebFetch(domain:flowbite.com)"
     ]
   }
 }

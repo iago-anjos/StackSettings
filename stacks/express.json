@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:expressjs.com)",
+      "WebFetch(domain:fastify.dev)",
+      "WebFetch(domain:hono.dev)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:zod.dev)"
+    ]
+  }
+}

@@ -2,9 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(vtex *)",
+
       "WebFetch(domain:developers.vtex.com)",
       "WebFetch(domain:help.vtex.com)",
-      "WebFetch(domain:vtex.io)"
+      "WebFetch(domain:vtex.io)",
+      "WebFetch(domain:learn.vtex.com)"
     ]
   }
 }
