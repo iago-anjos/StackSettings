@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:graphql.org)",
+      "WebFetch(domain:www.apollographql.com)"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:nextjs.org)",
+      "WebFetch(domain:vercel.com)"
+    ]
+  }
+}

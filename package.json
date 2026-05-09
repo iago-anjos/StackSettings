@@ -1,0 +1,11 @@
+{
+  "name": "claude-settings",
+  "version": "1.0.0",
+  "description": "CLI para gerar .claude/settings.json por stack de projeto",
+  "type": "module",
+  "bin": {
+    "claude-settings": "./init.js"
+  },
+  "keywords": ["claude", "claude-code", "settings", "cli"],
+  "license": "MIT"
+}

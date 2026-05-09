@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(prisma *)",
+      "Bash(psql *)",
+      "WebFetch(domain:www.prisma.io)"
+    ]
+  }
+}

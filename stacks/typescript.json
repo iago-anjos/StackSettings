@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tsc *)",
+      "WebFetch(domain:www.typescriptlang.org)"
+    ]
+  }
+}
