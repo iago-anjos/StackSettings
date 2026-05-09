@@ -1,11 +1,5 @@
 {
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:expressjs.com)",
-      "WebFetch(domain:fastify.dev)",
-      "WebFetch(domain:hono.dev)",
-      "WebFetch(domain:www.npmjs.com)",
-      "WebFetch(domain:zod.dev)"
-    ]
-  }
+  "files.exclude": { "**/dist": true },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }

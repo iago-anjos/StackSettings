@@ -1,17 +1,5 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(curl --ftp-ssl *)",
-      "Bash(curl --insecure *)",
-
-      "WebFetch(domain:docs.nuvemshop.com.br)",
-      "WebFetch(domain:dev.nuvemshop.com.br)",
-      "WebFetch(domain:partners.nuvemshop.com.br)",
-      "WebFetch(domain:www.nuvemshop.com.br)",
-      "WebFetch(domain:atendimento.nuvemshop.com.br)",
-      "WebFetch(domain:app.nuvemshop.com.br)",
-      "WebFetch(domain:docs.tiendanube.com)",
-      "WebFetch(domain:iagodemo.lojavirtualnuvem.com.br)"
-    ]
-  }
+  "files.associations": { "*.tpl": "twig" },
+  "[twig]": { "editor.defaultFormatter": "bajdzis.vscode-twig-pack" },
+  "emmet.includeLanguages": { "twig": "html" }
 }

@@ -1,12 +1,17 @@
 {
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:tailwindcss.com)",
-      "WebFetch(domain:ui.shadcn.com)",
-      "WebFetch(domain:www.radix-ui.com)",
-      "WebFetch(domain:headlessui.com)",
-      "WebFetch(domain:daisyui.com)",
-      "WebFetch(domain:flowbite.com)"
-    ]
-  }
+  "files.associations": { "*.css": "tailwindcss" },
+  "tailwindCSS.validate": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "'([^\"]*)'"],
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "'([^\"']*)'"]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "javascript": "html",
+    "javascriptreact": "html",
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }

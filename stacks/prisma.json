@@ -1,16 +1,4 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(prisma *)",
-      "Bash(psql *)",
-      "Bash(pg_dump *)",
-
-      "WebFetch(domain:www.prisma.io)",
-      "WebFetch(domain:supabase.com)",
-      "WebFetch(domain:planetscale.com)",
-      "WebFetch(domain:neon.tech)",
-      "WebFetch(domain:www.postgresql.org)",
-      "WebFetch(domain:www.mysql.com)"
-    ]
-  }
+  "files.associations": { "*.prisma": "prisma" },
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" }
 }

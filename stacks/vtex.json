@@ -1,12 +1,11 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(vtex *)",
-
-      "WebFetch(domain:developers.vtex.com)",
-      "WebFetch(domain:help.vtex.com)",
-      "WebFetch(domain:vtex.io)",
-      "WebFetch(domain:learn.vtex.com)"
-    ]
-  }
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "files.exclude": { "**/node_modules": true },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }

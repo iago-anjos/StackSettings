@@ -1,50 +1,60 @@
 {
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "chrome-devtools-mcp@claude-plugins-official": true
+  "window.zoomLevel": 1.5,
+  "workbench.colorTheme": "Dracula Theme",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.linkedEditing": true,
+  "editor.quickSuggestions": { "strings": "on", "other": "on", "comments": "off" },
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "on",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.stickyScroll.enabled": true,
+  "editor.glyphMargin": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
-  "extraKnownMarketplaces": {
-    "chrome-devtools-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "ChromeDevTools/chrome-devtools-mcp"
-      }
-    }
+  "workbench.editor.labelFormat": "short",
+  "workbench.startupEditor": "none",
+  "explorer.compactFolders": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock"
   },
-  "permissions": {
-    "allow": [
-      "Bash(git *)",
-      "Bash(npm *)",
-      "Bash(npx *)",
-      "Bash(node *)",
-      "Bash(python *)",
-      "Bash(python3 *)",
-      "Bash(pip *)",
-      "Bash(pip3 *)",
-
-      "WebSearch",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:developer.mozilla.org)",
-      "WebFetch(domain:stackoverflow.com)",
-
-      "mcp__claude_ai_Figma__get_metadata",
-      "mcp__claude_ai_Figma__get_design_context",
-      "mcp__claude_ai_Figma__get_screenshot",
-
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_screenshot",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__click",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__select_page",
-      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__resize_page",
-
-      "Skill(update-config)",
-      "Skill(update-config:*)"
-    ]
-  }
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "prettier.endOfLine": "lf",
+  "emmet.triggerExpansionOnTab": true,
+  "code-runner.runInTerminal": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "claudeCode.preferredLocation": "panel",
+  "github.copilot.enable": { "*": false },
+  "github.copilot.nextEditSuggestions.enabled": false
 }

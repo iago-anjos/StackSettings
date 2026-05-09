@@ -1,21 +1,13 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(vite *)",
-      "Bash(tsc *)",
-
-      "WebFetch(domain:react.dev)",
-      "WebFetch(domain:vitejs.dev)",
-      "WebFetch(domain:react-router.com)",
-      "WebFetch(domain:reactrouter.com)",
-      "WebFetch(domain:tanstack.com)",
-      "WebFetch(domain:redux.js.org)",
-      "WebFetch(domain:zustand-demo.pmnd.rs)",
-      "WebFetch(domain:jotai.org)",
-      "WebFetch(domain:www.framer.com)",
-      "WebFetch(domain:ui.shadcn.com)",
-      "WebFetch(domain:www.radix-ui.com)",
-      "WebFetch(domain:lucide.dev)"
-    ]
-  }
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "javascript.preferences.jsxAttributeCompletionStyle": "auto",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }
