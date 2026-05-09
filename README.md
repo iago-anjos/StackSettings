@@ -1,29 +1,25 @@
 # StackSettings
 
-CLI para configurar o Claude Code em projetos novos de acordo com as tecnologias que o projeto usa.
+CLI to generate VS Code workspace settings for new projects by selecting your tech stack from a terminal menu.
 
-## Para que serve
+## What it does
 
-O Claude Code usa um arquivo `.claude/settings.json` dentro de cada projeto para saber quais comandos e recursos ele tem permissao de usar. Sem esse arquivo, ele pede confirmacao para quase tudo ou fica restrito demais.
+Generates a `.vscode/settings.json` in your project with settings tuned for the selected stacks, merged on top of a sensible base config. It also updates `.gitignore` with stack-appropriate patterns.
 
-Este CLI gera esse arquivo automaticamente com base nas stacks que voce escolhe, sem precisar editar JSON na mao.
+The base config covers editor fundamentals: formatting, indentation, bracket colorization, file nesting, and Prettier as the default formatter. Each stack layer adds its specific settings on top.
 
-## Quando usar
+## Usage
 
-Sempre que iniciar um projeto novo. Rode antes de comecar a trabalhar com o Claude Code no projeto.
-
-## Como usar
-
-Na raiz do projeto novo:
+In the root of a new project:
 
 ```bash
 npx github:iago-anjos/StackSettings
 ```
 
-O terminal exibe um menu com as stacks disponiveis:
+Select the stacks that apply (comma-separated numbers):
 
 ```
-  Claude Settings Generator
+  VS Code Settings Generator
 
 Selecione as stacks do projeto (numeros separados por virgula):
 
@@ -33,41 +29,76 @@ Selecione as stacks do projeto (numeros separados por virgula):
   4. Tailwind CSS
   5. Prisma / Postgres
   6. GraphQL / Apollo
-  7. VTEX IO
-  8. Nuvemshop
+  7. Express / Node
+  8. VTEX IO
+  9. Nuvemshop
   0. Nenhuma (somente base)
 
 > 1,2,3
 
-  .claude/settings.json gerado com: React, Next.js, TypeScript
-  .claude/settings.local.json adicionado ao .gitignore
+  .vscode/settings.json gerado com: React, Next.js, TypeScript
+  .vscode/settings.json adicionado ao .gitignore
 ```
 
-O arquivo `.claude/settings.json` gerado pode ser commitado no repositorio do projeto.
+The settings file is gitignored by default — it is personal workspace config, not project config.
 
-## Como funciona
+## Requirements
 
-O settings global do Claude Code (`~/.claude/settings.json`) ja cobre as permissoes gerais como git, npm e ferramentas do dia a dia. O arquivo gerado por este CLI adiciona apenas o que e especifico daquele projeto, como dominios de documentacao, comandos de CLI de plataformas e ferramentas de banco de dados.
+- Node.js 18+
+- VS Code with the relevant extensions installed per stack (Prettier, ESLint, Tailwind CSS IntelliSense, Prisma, GraphQL, etc.)
 
-As permissoes das stacks selecionadas sao mergeadas e deduplicadas automaticamente com uma base comum (git, npm, npx, node, WebSearch, GitHub).
+## Structure
 
-## Adicionando uma nova stack
+```
+stacks/
+  base.json        — base editor config (font, theme, formatting)
+  react.json       — React + JSX settings and inlay hints
+  nextjs.json      — Next.js specific (path aliases, watcher excludes)
+  typescript.json  — full TypeScript inlay hints and preferences
+  tailwind.json    — Tailwind CSS IntelliSense + class detection
+  prisma.json      — Prisma formatter and file associations
+  graphql.json     — GraphQL language support
+  express.json     — Node.js debug auto-attach and build config
+  vtex.json        — VTEX IO workspace config
+  nuvemshop.json   — Twig template support and SCSS formatting
 
-1. Crie `stacks/nome.json` com as permissoes da stack:
+gitignore/
+  base.txt         — common ignores (node_modules, .env, logs)
+  react.txt        — build output, coverage, cache
+  nextjs.txt       — .next, .turbo, .vercel
+  typescript.txt   — dist, tsbuildinfo
+  prisma.txt       — SQLite database files
+  graphql.txt      — generated type files
+  express.txt      — build output, uploads
+  vtex.txt         — .vtex, store/react
+```
+
+## Customizing base.json
+
+`base.json` is the personal baseline applied to every project. Edit it to match your global VS Code preferences (theme, font size, terminal profile, rulers, etc.). When you fork this repo, this is the main file to update to match your setup.
+
+## Adding a new stack
+
+1. Create `stacks/name.json` with the VS Code workspace settings for that stack:
 
 ```json
 {
-  "permissions": {
-    "allow": [
-      "Bash(docker *)",
-      "WebFetch(domain:docs.docker.com)"
-    ]
-  }
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-docker" }
 }
 ```
 
-2. Adicione a entrada no array `STACKS` dentro de `init.js`:
+2. Optionally create `gitignore/name.txt` with patterns to append to `.gitignore`.
+
+3. Add the entry to the `STACKS` array in `init.js`:
 
 ```js
 { label: 'Docker', file: 'docker.json' },
+```
+
+## Using your own fork
+
+Fork the repo, update `base.json` with your personal settings, and run:
+
+```bash
+npx github:your-username/StackSettings
 ```

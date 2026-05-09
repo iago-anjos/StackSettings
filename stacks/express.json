@@ -1,5 +1,10 @@
 {
   "files.exclude": { "**/dist": true },
+  "files.watcherExclude": {
+    "**/dist/**": true,
+    "**/node_modules/**": true
+  },
+  "debug.javascript.autoAttachFilter": "smart",
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }

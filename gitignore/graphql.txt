@@ -1,0 +1,5 @@
+# GraphQL generated files
+__generated__/
+*.generated.ts
+*.generated.tsx
+graphql.schema.json

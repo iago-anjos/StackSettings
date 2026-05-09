@@ -3,5 +3,8 @@
     "*.graphql": "graphql",
     "*.gql": "graphql"
   },
-  "[graphql]": { "editor.defaultFormatter": "GraphQL.vscode-graphql" }
+  "[graphql]": {
+    "editor.defaultFormatter": "GraphQL.vscode-graphql",
+    "editor.formatOnSave": true
+  }
 }

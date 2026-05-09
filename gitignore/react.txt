@@ -1,0 +1,10 @@
+# React build
+dist/
+build/
+
+# Testing
+coverage/
+
+# Cache
+.parcel-cache/
+.cache/

@@ -42,14 +42,35 @@ async function ask(question) {
   return new Promise(resolve => rl.question(question, ans => { rl.close(); resolve(ans.trim()); }));
 }
 
-function ensureGitignore(cwd) {
+function ensureGitignore(cwd, selected) {
   const gitignorePath = join(cwd, '.gitignore');
-  const entry = '.vscode/settings.json';
+  const existing = existsSync(gitignorePath) ? readFileSync(gitignorePath, 'utf8') : '';
+  const blocks = [];
+
+  if (!existing.includes('.vscode/settings.json')) {
+    blocks.push('.vscode/settings.json');
+  }
+
+  const stackNames = ['base', ...selected.map(s => s.file.replace('.json', ''))];
+  for (const name of stackNames) {
+    const tpl = join(__dirname, 'gitignore', `${name}.txt`);
+    if (!existsSync(tpl)) continue;
+    const lines = readFileSync(tpl, 'utf8').trim().split(/\r?\n/);
+    const filtered = lines.filter(line => {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) return true;
+      return !existing.includes(t);
+    });
+    const hasNew = filtered.some(l => { const t = l.trim(); return t && !t.startsWith('#'); });
+    if (hasNew) blocks.push('', ...filtered);
+  }
+
+  if (!blocks.length) return;
+  const addition = blocks.join('\n');
   if (existsSync(gitignorePath)) {
-    const content = readFileSync(gitignorePath, 'utf8');
-    if (!content.includes(entry)) appendFileSync(gitignorePath, `\n${entry}\n`);
+    appendFileSync(gitignorePath, `\n${addition}\n`);
   } else {
-    writeFileSync(gitignorePath, `${entry}\n`);
+    writeFileSync(gitignorePath, `${addition}\n`);
   }
 }
 
@@ -82,7 +103,7 @@ async function main() {
   const vscodeDir = join(cwd, '.vscode');
   if (!existsSync(vscodeDir)) mkdirSync(vscodeDir);
   writeFileSync(join(vscodeDir, 'settings.json'), JSON.stringify(merged, null, 2) + '\n');
-  ensureGitignore(cwd);
+  ensureGitignore(cwd, selected);
 
   const labels = selected.length ? selected.map(s => s.label).join(', ') : 'base';
   console.log(`\n  .vscode/settings.json gerado com: ${labels}`);

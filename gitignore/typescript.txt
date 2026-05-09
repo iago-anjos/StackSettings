@@ -1,0 +1,4 @@
+# TypeScript build
+dist/
+build/
+*.tsbuildinfo
