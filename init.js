@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { createInterface } from 'readline';
-import { writeFileSync, existsSync, mkdirSync, readFileSync, appendFileSync } from 'fs';
+import { writeFileSync, existsSync, readFileSync, appendFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -44,12 +44,14 @@ async function ask(question) {
 
 function ensureGitignore(cwd) {
   const gitignorePath = join(cwd, '.gitignore');
-  const entry = '.claude/settings.local.json';
+  const entry = 'settings.json';
   if (existsSync(gitignorePath)) {
     const content = readFileSync(gitignorePath, 'utf8');
     if (!content.includes(entry)) {
       appendFileSync(gitignorePath, `\n${entry}\n`);
     }
+  } else {
+    writeFileSync(gitignorePath, `${entry}\n`);
   }
 }
 
@@ -80,17 +82,12 @@ async function main() {
   merged['$schema'] = 'https://json.schemastore.org/claude-code-settings.json';
 
   const cwd = process.cwd();
-  const outDir = join(cwd, '.claude');
-  if (!existsSync(outDir)) mkdirSync(outDir);
-
-  const outPath = join(outDir, 'settings.json');
-  writeFileSync(outPath, JSON.stringify(merged, null, 2) + '\n');
-
+  writeFileSync(join(cwd, 'settings.json'), JSON.stringify(merged, null, 2) + '\n');
   ensureGitignore(cwd);
 
   const labels = selected.length ? selected.map(s => s.label).join(', ') : 'base';
-  console.log(`\n  .claude/settings.json gerado com: ${labels}`);
-  console.log(`  .claude/settings.local.json adicionado ao .gitignore\n`);
+  console.log(`\n  settings.json gerado com: ${labels}`);
+  console.log(`  settings.json adicionado ao .gitignore\n`);
 }
 
 main().catch(err => { console.error(err.message); process.exit(1); });
